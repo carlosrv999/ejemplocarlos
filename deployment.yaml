@@ -1,12 +1,12 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: sample-k8s-deployment
+  name: sample-deployment-0
 spec:
-  replicas: 1
+  replicas: 3
   selector:
     matchLabels:
-      app: test
+      app: test-0
   strategy:
     rollingUpdate:
       maxSurge: 0
@@ -15,10 +15,10 @@ spec:
   template:
     metadata:
       labels:
-        app: test
+        app: test-0
     spec:
       containers:
-      - name: sample-k8s-app-container
+      - name: sample-app-container-0
         image: swr.la-south-2.myhuaweicloud.com/hwperu/test-jenkins:$BUILD_NUMBER
         ports:
         - containerPort: 80
